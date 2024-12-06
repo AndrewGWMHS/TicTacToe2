@@ -1,12 +1,12 @@
 import java.util.Scanner;
- class TicTacToe {
+public class TicTacToe {
     private static String [][] gameBoard = new String[3][3];
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
         String player;
-        String playerOne = " X ";
+        String playerOne = "X";
         String playerTwo = "O";
         int playerTurn = 0;
 
@@ -29,10 +29,11 @@ import java.util.Scanner;
                 }
 
                 do {
-
                     row = InputHelper.getRangedInt(scan, "Enter your move row [1-3]", 1, 3) - 1;
                     col = InputHelper.getRangedInt(scan, "Enter your move column [1-3]", 1, 3) - 1;
+
                 } while(!isValidMove(row, col));
+
                 gameBoard[row][col] = player;
                 if(isWin(player)) {
                     displayBoard();
@@ -96,7 +97,7 @@ import java.util.Scanner;
     boolean win = true;
         for(int c = 0; c < gameBoard[0].length; c++) {
             win = true;
-                for(int r = 0; r < gameBoard.length; c++) {
+                for(int r = 0; r < gameBoard.length; r++) {
                     if(!player.equals(gameBoard[r][c])) {
                         win = false;
                         break;
@@ -128,15 +129,15 @@ import java.util.Scanner;
 
  private static boolean isDiagonalWin(String player) {
      boolean win = false;
-     boolean diagonalDown = false;
-     boolean diagonalUp = false;
+     boolean diagonalDown = true;
+     boolean diagonalUp = true;
 
-     for (int r = 0; r < gameBoard[0].length; r++) {
-        if(player.equals(gameBoard[r][r])) {
-            diagonalDown = true;
+     for (int r = 0; r < gameBoard.length; r++) {
+        if(!player.equals(gameBoard[r][r])) {
+            diagonalDown = false;
         }
-        else if (player.equals(gameBoard[r][gameBoard.length-(r+1)])) {
-            diagonalUp = true;
+        if (!player.equals(gameBoard[r][gameBoard.length-(r+1)])) {
+            diagonalUp = false;
          }
      }
 
