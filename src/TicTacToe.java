@@ -29,8 +29,8 @@ public class TicTacToe {
                 }
 
                 do {
-                    row = InputHelper.getRangedInt(scan, "Enter your move row [1-3]", 1, 3) - 1;
-                    col = InputHelper.getRangedInt(scan, "Enter your move column [1-3]", 1, 3) - 1;
+                    row = InputHelper.getRangedInt(scan, "Enter your move row (" + player + ") [1-3].", 1, 3) - 1;
+                    col = InputHelper.getRangedInt(scan, "Enter your move column(" + player + ") [1-3]", 1, 3) - 1;
 
                 } while(!isValidMove(row, col));
 
